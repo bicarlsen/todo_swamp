@@ -7,12 +7,22 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [dev-dependencies]
 assert_cmd = "1.0.1"
+criterion = "0.5.1"
 fake = "2.10.0"
 predicates = "1"
 
 [dependencies]
 rand = "0.7"
+rayon = "1.10.0"
 
 [dependencies.nom]
 version = "5"
 features = ["regexp"]
+
+[[bench]]
+name = "search"
+harness = false
+
+[[bench]]
+name = "commands"
+harness = false

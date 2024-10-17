@@ -11,7 +11,7 @@ pub fn main() {
     let stdin = io::stdin();
     for line in stdin.lock().lines() {
         if let Ok(l) = line {
-            runner::run_line(&l, &mut tl);
+            runner::run_line(&l, &mut tl, &mut io::stdout(), &mut io::stderr());
         }
     }
 }

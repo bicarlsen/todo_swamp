@@ -1,13 +1,14 @@
 use crate::*;
+use std::io;
 
-pub fn run_line(line: &str, tl: &mut TodoList) {
+pub fn run_line(line: &str, tl: &mut TodoList, out: &mut impl io::Write, err: &mut impl io::Write) {
     if let Ok((_, q)) = parser::query(line) {
         match run_query(q, tl) {
             Ok(r) => {
-                println!("{}", r);
+                writeln!(out, "{}", r).expect("could not write to out");
             }
             Err(e) => {
-                eprintln!("Error: {}", e);
+                writeln!(err, "Error: {}", e).expect("could not write to err");
             }
         }
     }
